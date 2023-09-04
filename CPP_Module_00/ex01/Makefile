@@ -1,10 +1,10 @@
 NAME=phonebook
 
-SRCS=phonebook.cpp #contact.cpp
+SRCS=phonebook.cpp contact.cpp
 
-OBJS=phonebook.o #contact.o
+OBJS=phonebook.o contact.o
 
-CC= c++
+CC=c++
 
 CFLAGS= -Wall -Wextra -Werror -std=c++98
 
