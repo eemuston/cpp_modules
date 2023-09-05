@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:28:59 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/04 16:55:24 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/09/05 16:26:00 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,9 @@ int main (void)
 		std::cin.clear();
 		std::cout << "Do you wanna ADD, SEARCH or EXIT?: ";
 		std::cin >> str;
-		if (str == "ADD")
+		if (std::cin.eof())
+			break ;
+		else if (str == "ADD")
 			book.addContacts();
 		else if (str == "SEARCH")
 		{
