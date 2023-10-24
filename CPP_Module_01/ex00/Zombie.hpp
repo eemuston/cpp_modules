@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 13:48:32 by eemuston          #+#    #+#             */
-/*   Updated: 2023/10/17 13:49:47 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/10/24 19:03:25 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 class Zombie
 {
 	public:
-		Zombie(void);
+		Zombie(std::string name);
 		~Zombie(void);
 		void announce(void);
 	private:
-	std::string	name;
+		std::string	_name;
 };
 
 #endif
