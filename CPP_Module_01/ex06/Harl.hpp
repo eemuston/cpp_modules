@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/24 18:16:03 by eemuston          #+#    #+#             */
-/*   Updated: 2023/10/26 05:57:35 by eemuston         ###   ########.fr       */
+/*   Created: 2023/10/26 04:56:57 by eemuston          #+#    #+#             */
+/*   Updated: 2023/10/26 05:12:36 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef HARL_HPP
+# define HARL_HPP
 
-int	main(void)
+#include <iostream>
+
+class Harl
 {
-	int	N = 4;
-	int i = 0;
+	public:
+		Harl(void);
+		~Harl(void);
+		void complain(std::string level);
+	private:
+		void debug(void);
+		void info(void);
+		void warning(void);
+		void error(void);
+};
 
-	Zombie *zombiehorde = zombieHorde(N, "Jussi-Kalle");
-	while (i < N)
-	{
-		zombiehorde[i].announce();
-		i++;
-	}
-	delete[] zombiehorde;
-	return (0);
-}
+#endif
