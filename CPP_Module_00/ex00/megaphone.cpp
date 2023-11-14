@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:29:10 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/03 17:29:12 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/11/14 13:09:44 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int main(int argc, char **argv)
 			j++;
 		}
 		j = 0;
-		std::cout << " ";
 		i++;
 	}
 	std::cout << std::endl;

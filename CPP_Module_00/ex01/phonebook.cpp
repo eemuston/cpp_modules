@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:28:59 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/05 16:26:00 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/11/14 16:04:17 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ PhoneBook::~PhoneBook(void)
 void	PhoneBook::addContacts(void)
 {
 	static int	i;
-	this->contact[(i % 8) + 1].initContact();
-	this->contact[(i % 8) + 1].setIndex((i % 8) + 1);
-	if (this->contact[0].contact_amount != 9)
+	this->contact[(i % 8)].initContact();
+	this->contact[(i % 8)].setIndex((i % 8));
+	if (this->contact[0].contact_amount != 8)
 		this->contact[0].contact_amount++;
 	i++;
 }
@@ -44,13 +44,13 @@ void	PhoneBook::printContacts(void)
 {
 	int i;
 
-	i = 1;
+	i = 0;
 	std::cout << "---------------------------------------------" << std::endl;
 	std::cout << "|     Index| Firstname|  Lastname|  Nickname|" << std::endl;
 	std::cout << "---------------------------------------------" << std::endl;
 	while (i < this->contact[0].contact_amount)
 	{
-		std::cout << "|" << std::setw(10) << this->contact[i].getIndex() << std::flush;
+		std::cout << "|" << std::setw(10) << this->contact[i].getIndex() + 1 << std::flush;
 		std::cout << "|" << std::setw(10) << rightLength(this->contact[i].getFirstName()) << std::flush;
 		std::cout << "|" << std::setw(10) << rightLength(this->contact[i].getLastName()) << std::flush;
 		std::cout << "|" << std::setw(10) << rightLength(this->contact[i].getNickName()) << std::flush;
@@ -67,7 +67,7 @@ void	PhoneBook::printContactsWithIndex(void)
 	
 	std::cout << "Which index do you want to print : ";
 	std::cin.clear();
-	std::cin >> index;
+	std::getline(std::cin, index);
 	std::cin.clear();
 	for (int i = 0; i < index.length(); i++)
 	{
@@ -77,8 +77,8 @@ void	PhoneBook::printContactsWithIndex(void)
 			return ;
 		}
 	}
-	num = std::atoi(index.c_str());
-	if (num > 0 && num < this->contact[0].contact_amount) 
+	num = std::atoi(index.c_str()) - 1;
+	if (num >= 0 && num < this->contact[0].contact_amount) 
 	{
 		std::cout << "Firstname : " << this->contact[num].getFirstName() << std::endl;
 		std::cout << "Lastname : " << this->contact[num].getLastName() << std::endl;
@@ -106,7 +106,7 @@ int main (void)
 		str.clear();
 		std::cin.clear();
 		std::cout << "Do you wanna ADD, SEARCH or EXIT?: ";
-		std::cin >> str;
+		std::getline(std::cin, str);
 		if (std::cin.eof())
 			break ;
 		else if (str == "ADD")
