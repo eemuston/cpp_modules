@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 20:24:44 by eemuston          #+#    #+#             */
-/*   Updated: 2023/11/20 20:31:15 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/11/20 20:33:00 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,6 @@ void	FragTrap::attack(const std::string& target)
 
 void	FragTrap::highFivesGuys(void)
 {
-	std::cout << "FragTrap wants to high five! LET'S GOOOOOOOOOOOOOO!" << std::endl;
+	std::cout << "FragTrap "<< this->getName() << " wants to high five! LET'S GOOOOOOOOOOOOOO!" << std::endl;
 	return ;
 }
