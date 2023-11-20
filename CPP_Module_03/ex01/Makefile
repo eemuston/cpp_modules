@@ -1,8 +1,8 @@
-NAME= claptrap
+NAME= scavtrap
 
-SRCS= main.cpp ClapTrap.cpp
+SRCS= main.cpp ClapTrap.cpp ScavTrap.cpp
 
-OBJS= main.o ClapTrap.o
+OBJS= main.o ClapTrap.o ScavTrap.o
 
 CC=c++
 

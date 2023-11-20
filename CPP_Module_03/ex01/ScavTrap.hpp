@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 13:40:58 by eemuston          #+#    #+#             */
-/*   Updated: 2023/11/10 13:45:09 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/11/20 20:00:37 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,17 @@
 # define SCAVTRAP_HPP
 
 #include <iostream>
+#include "ClapTrap.hpp"
 
-class ScavTrap
+class ScavTrap : public ClapTrap
 {
 	public:
-	
-	private:
-	
+		ScavTrap(std::string name);
+		ScavTrap(ScavTrap const &src);
+		~ScavTrap(void);
+		
+		void attack(const std::string& target);
+		void guardGate(void);
 };
 
 #endif
