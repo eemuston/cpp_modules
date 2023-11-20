@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 12:02:04 by eemuston          #+#    #+#             */
-/*   Updated: 2023/11/20 19:49:08 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/11/20 20:10:41 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,17 +86,17 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	return ;
 }
 
-int		ClapTrap::getEnergypoints(void) const
+int		ClapTrap::getEnergyPoints(void) const
 {
 	return (this->_energyPoints);
 }
 
-int		ClapTrap::getHitpoints(void) const
+int		ClapTrap::getHitPoints(void) const
 {
 	return (this->_hitPoints);
 }
 
-int		ClapTrap::getAttackdamage(void) const
+int		ClapTrap::getAttackDamage(void) const
 {
 	return (this->_attackDamage);
 }

@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 12:02:09 by eemuston          #+#    #+#             */
-/*   Updated: 2023/11/20 19:08:08 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/11/20 20:11:11 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ int main(void)
 	a.takeDamage(100);
 	a.attack("Teppo");
 	
-	std::cout << "Energypoints of Teppo: " << b.getEnergypoints() << std::endl;
+	std::cout << "Energypoints of Teppo: " << b.getEnergyPoints() << std::endl;
 	b.attack("Matti");
 	b.takeDamage(5);
 	b.beRepaired(5);
-	std::cout << "Energypoints of Teppo: " << b.getEnergypoints() << std::endl;
+	std::cout << "Energypoints of Teppo: " << b.getEnergyPoints() << std::endl;
 	
 	return (0);
 }
