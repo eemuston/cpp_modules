@@ -1,8 +1,8 @@
 NAME= animal
 
-SRCS= main.cpp Animal.cpp Dog.cpp Cat.cpp
+SRCS= main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp
 
-OBJS= main.o Animal.o Dog.o Cat.o
+OBJS= main.o Animal.o Dog.o Cat.o WrongAnimal.o WrongCat.o
 
 CC=c++
 
