@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 14:30:05 by eemuston          #+#    #+#             */
-/*   Updated: 2023/11/28 03:20:01 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/12/02 06:03:29 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 Brain::Brain(void)
 {
 	std::cout << "Brain constructor called" << std::endl;
+	for (int i = 0; i < 100; i++)
+		this->ideas[i] = "idea";
 }
 
 Brain::~Brain(void)
@@ -33,12 +35,12 @@ Brain &Brain::operator=(Brain const &rhs)
 	std::cout << "Brain assignation operator called" << std::endl;
 	if (this != &rhs) {
 		for (int i = 0; i < 100; i++)
-			this->ideas[i] = rhs.ideas[i];
+			this->ideas[i] = rhs.getIdeas(i);
 	}
 	return (*this);
 }
 
-std::string	*Brain::getIdeas(void)
+std::string	Brain::getIdeas(int i) const
 {
-	return (this->ideas);
+	return (this->ideas[i]);
 }
