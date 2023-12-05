@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 10:14:07 by eemuston          #+#    #+#             */
-/*   Updated: 2023/11/22 10:14:35 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/12/05 22:50:35 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define DOG_HPP
 
 #include "Animal.hpp"
+#include "Brain.hpp"
 
 class Dog : public Animal
 {
@@ -22,7 +23,11 @@ class Dog : public Animal
 		Dog(Dog const &src);
 		virtual ~Dog(void);
 		Dog &operator=(Dog const &rhs);
+		
 		virtual void makeSound(void) const;
+		Brain *getBrain(void) const;
+	private:
+		Brain *brain;	
 };
 
 #endif
