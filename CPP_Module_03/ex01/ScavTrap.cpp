@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 13:40:46 by eemuston          #+#    #+#             */
-/*   Updated: 2023/11/20 20:12:26 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/12/06 16:57:45 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,19 @@ ScavTrap::~ScavTrap(void)
 {
 	std::cout << "ScavTrap destructor called" << std::endl;
 	return ;
+}
+
+ScavTrap &ScavTrap::operator=(ScavTrap const &rhs)
+{
+	std::cout << "ScavTrap assignation operator called" << std::endl;
+	if (this != &rhs)
+	{
+		this->_name = rhs.getName();
+		this->_hitPoints = rhs.getHitPoints();
+		this->_energyPoints = rhs.getEnergyPoints();
+		this->_attackDamage = rhs.getAttackDamage();
+	}
+	return (*this);
 }
 
 void	ScavTrap::attack(const std::string& target)

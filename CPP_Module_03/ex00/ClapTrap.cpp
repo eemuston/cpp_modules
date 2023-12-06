@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 12:02:04 by eemuston          #+#    #+#             */
-/*   Updated: 2023/11/20 20:10:41 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/12/06 16:54:24 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,19 @@ ClapTrap::~ClapTrap(void)
 {
 	std::cout << "ClapTrap destructor called" << std::endl;
 	return ;
+}
+
+ClapTrap &ClapTrap::operator=(ClapTrap const &rhs)
+{
+	std::cout << "ClapTrap assignation operator called" << std::endl;
+	if (this != &rhs)
+	{
+		this->_name = rhs.getName();
+		this->_hitPoints = rhs.getHitPoints();
+		this->_energyPoints = rhs.getEnergyPoints();
+		this->_attackDamage = rhs.getAttackDamage();
+	}
+	return (*this);
 }
 
 void	ClapTrap::attack(const std::string& target)

@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 20:26:39 by eemuston          #+#    #+#             */
-/*   Updated: 2023/11/20 20:27:19 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/12/06 16:59:01 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ class FragTrap : public ClapTrap
 		FragTrap(std::string name);
 		FragTrap(FragTrap const &src);
 		~FragTrap(void);
+		FragTrap &operator=(FragTrap const &rhs);
 		
 		void attack(const std::string& target);
 		void highFivesGuys(void);

@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 20:24:44 by eemuston          #+#    #+#             */
-/*   Updated: 2023/11/20 20:33:00 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/12/06 16:58:54 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,19 @@ FragTrap::~FragTrap(void)
 {
 	std::cout << "FragTrap destructor called" << std::endl;
 	return ;
+}
+
+FragTrap &FragTrap::operator=(FragTrap const &rhs)
+{
+	std::cout << "FragTrap assignation operator called" << std::endl;
+	if (this != &rhs)
+	{
+		this->_name = rhs.getName();
+		this->_hitPoints = rhs.getHitPoints();
+		this->_energyPoints = rhs.getEnergyPoints();
+		this->_attackDamage = rhs.getAttackDamage();
+	}
+	return (*this);
 }
 
 void	FragTrap::attack(const std::string& target)
