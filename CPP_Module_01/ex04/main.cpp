@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 02:55:20 by eemuston          #+#    #+#             */
-/*   Updated: 2023/11/16 15:37:45 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/12/06 14:48:08 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ int	main(int ac, char **av)
 {
 	char			c;
 	std::ifstream	inFile;
-	std::string		startFile = av[1];
 	std::string		tmp;
 
 	if (ac != 4)
@@ -57,6 +56,7 @@ int	main(int ac, char **av)
 		std::cout << "Usage: ./replace [filename] [replaceable] [replacer]!" << std::endl;
 		return (1);
 	}
+	std::string		startFile = av[1];
 	inFile.open(startFile);
 	if (inFile.fail())
 	{
@@ -66,5 +66,10 @@ int	main(int ac, char **av)
 	while(!inFile.eof() && inFile >> std::noskipws >> c)
 		tmp += c;
 	inFile.close();
+	if (tmp.size() == 0)
+	{
+		std::cout << "Error: " << startFile << " is empty!" << std::endl;
+		return (1);
+	}
 	return (replace(av, tmp));
 }
