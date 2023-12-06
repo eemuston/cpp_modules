@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:28:59 by eemuston          #+#    #+#             */
-/*   Updated: 2023/11/14 16:04:17 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/12/06 15:00:12 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	PhoneBook::printContactsWithIndex(void)
 	std::cin.clear();
 	std::getline(std::cin, index);
 	std::cin.clear();
-	for (int i = 0; i < index.length(); i++)
+	for (unsigned long i = 0; i < index.length(); i++)
 	{
 		if (!std::isdigit(index[i]))
 		{
