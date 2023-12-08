@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 14:35:06 by eemuston          #+#    #+#             */
-/*   Updated: 2023/12/08 13:17:21 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/12/08 13:27:44 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,7 @@ int main( void )
 	
 	std::cout << Fixed::max( a, b ) << std::endl;
 	std::cout << Fixed::min( a, b ) << std::endl;
-	std::cout << Fixed::max( a, b ) << std::endl;
-	std::cout << Fixed::min( a, b ) << std::endl;
-	
-	std::cout << c << std::endl;
-	
+	std::cout << Fixed::max( e, d ) << std::endl;
+	std::cout << Fixed::min( e, d ) << std::endl;
 	return 0;
 }
