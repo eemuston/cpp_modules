@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 14:30:13 by eemuston          #+#    #+#             */
-/*   Updated: 2023/12/02 06:02:51 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/12/09 15:04:17 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ class Brain {
 		Brain(Brain const &src);
 		Brain &operator=(Brain const &rhs);
 		std::string	getIdeas(int i) const;
+		void		setIdeas(int i, std::string idea);
+		void		printIdeas(void);
 	private:
 		std::string		ideas[100];
 };

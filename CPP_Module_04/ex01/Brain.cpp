@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 14:30:05 by eemuston          #+#    #+#             */
-/*   Updated: 2023/12/02 06:03:29 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/12/10 11:45:50 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,15 @@ Brain &Brain::operator=(Brain const &rhs)
 std::string	Brain::getIdeas(int i) const
 {
 	return (this->ideas[i]);
+}
+
+void		Brain::setIdeas(int i, std::string idea)
+{
+	this->ideas[i] = idea;
+}
+
+void	Brain::printIdeas(void)
+{
+	for (int i = 0; i < 5; i++)
+		std::cout << this->ideas[i] << std::endl;
 }

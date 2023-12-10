@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 10:13:58 by eemuston          #+#    #+#             */
-/*   Updated: 2023/12/05 22:56:48 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/12/10 12:02:09 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ Dog::Dog(Dog const &src)
 
 Dog::~Dog(void)
 {
-	std::cout << "Dog destructor called" << std::endl;
 	delete this->brain;
+	std::cout << "Dog destructor called" << std::endl;
 }
 
 Dog &Dog::operator=(Dog const &rhs)

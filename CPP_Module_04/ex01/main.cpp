@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 10:11:03 by eemuston          #+#    #+#             */
-/*   Updated: 2023/12/05 22:59:56 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/12/10 11:59:54 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,29 +17,27 @@
 
 int main()
 {
-	{
-		Animal *Animals[10];
-		for (int i = 0; i < 10; ++i)
-		{
-			if (i % 2 == 0)
-				Animals[i] = new Dog();
-			else
-				Animals[i] = new Cat();
-		}
-		std::cout << "DEEP COPY!!" << std::endl;
-		std::cout << "-----------------------------" << std::endl;
-		Dog copy(*(Dog *)Animals[4]);
-		for (int i = 0; i < 100; ++i)
-		{
-			std::cout << copy.getBrain()->getIdeas(i) << "    ";
-			std::cout << ((Dog *)Animals[4])->getBrain()->getIdeas(i) << std::endl;
-		}
-		std::cout << "-----------------------------"
-				  << std::endl;
-		for (int i = 0; i < 10; ++i)
-		{
-			delete Animals[i];
-		}
-	}
-	system("leaks animal");
+	const Animal* j = new Dog();
+	const Animal* i = new Cat();
+	
+	delete j;//should not create a leak
+	delete i;
+	
+	Dog basic;
+	
+	std::cout << "Setting ideas for basic" << std::endl;
+	basic.getBrain()->setIdeas(0, "idea1");
+	basic.getBrain()->setIdeas(1, "idea2");
+	std::cout << "printing the brain of basic" << std::endl;
+	basic.getBrain()->printIdeas();
+	Dog tmp = basic;
+	std::cout << "printing the brain of tmp" << std::endl;
+	tmp.getBrain()->printIdeas();
+	std::cout << "setting extra idea for tmp" << std::endl;
+	tmp.getBrain()->setIdeas(2, "idea3");
+	std::cout << "checking that the brain of tmp has the new idea" << std::endl;
+	tmp.getBrain()->printIdeas();
+	std::cout << "making sure that the brain of basic doesn't have that idea" << std::endl;
+	basic.getBrain()->printIdeas();
+return 0;	
 }
