@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 12:41:32 by eemuston          #+#    #+#             */
-/*   Updated: 2023/12/11 14:16:42 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/12/11 15:04:32 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ class Cure : public AMateria
 		~Cure(void);
 		Cure &operator=(Cure const &rhs);
 
-		
+		AMateria* clone() const;
+		void use(ICharacter& target);
+		std::string const &getType(void) const;
 	private:
 		std::string _type;	
 };

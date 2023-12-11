@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 12:12:37 by eemuston          #+#    #+#             */
-/*   Updated: 2023/12/10 12:29:14 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/12/11 15:56:42 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 class AMateria
 {
 	protected:
-
+		std::string _type;
+		unsigned int _xp;
 	public:
 	AMateria(std::string const & type);
 	
