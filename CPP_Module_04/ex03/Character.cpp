@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 13:32:07 by eemuston          #+#    #+#             */
-/*   Updated: 2023/12/12 15:06:41 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/12/12 18:21:19 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,33 @@ Character & Character::operator=(Character const & rhs)
 			_materia[i] = rhs._materia[i];
 	}
 	return (*this);
+}
+
+std::string const & Character::getName(void) const
+{
+	return (_name);
+}
+
+void Character::equip(AMateria* m)
+{
+	for (int i = 0; i < 4; i++)
+	{
+		if (_materia[i] == NULL)
+		{
+			_materia[i] = m;
+			break ;
+		}
+	}
+}
+
+void Character::unequip(int idx)
+{
+	if (idx >= 0 && idx < 4)
+		_materia[idx] = NULL;
+}
+
+void Character::use(int idx, ICharacter& target)
+{
+	if (idx >= 0 && idx < 4 && _materia[idx] != NULL)
+		_materia[idx]->use(target);
 }

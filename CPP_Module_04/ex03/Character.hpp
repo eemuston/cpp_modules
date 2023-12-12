@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 13:32:10 by eemuston          #+#    #+#             */
-/*   Updated: 2023/12/12 14:59:34 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/12/12 19:06:30 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 #include <iostream>
 #include "ICharacter.hpp"
+#include "AMateria.hpp"
 
 class Character : public ICharacter
 {
-	
 	public:
 		Character(std::string name);
 		Character(Character const & src);
