@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 13:32:10 by eemuston          #+#    #+#             */
-/*   Updated: 2023/12/11 15:38:20 by eemuston         ###   ########.fr       */
+/*   Updated: 2023/12/12 14:59:34 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,18 @@ class Character : public ICharacter
 {
 	
 	public:
+		Character(std::string name);
+		Character(Character const & src);
+		~Character(void);
+		Character & operator=(Character const & rhs);
+		
 		std::string const & getName() const;
 		void equip(AMateria* m);
 		void unequip(int idx);
 		void use(int idx, ICharacter& target);
+	private:
+		std::string _name;
+		AMateria *_materia[4];
 };
 
 #endif
