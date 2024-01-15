@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 12:39:33 by eemuston          #+#    #+#             */
-/*   Updated: 2023/12/12 19:04:25 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/01/15 09:04:27 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,5 @@ class MateriaSource : public IMateriaSource
 		AMateria* createMateria(std::string const & type);
 	private:
 		AMateria	*_materia[4];
-		int			_count;
-	
 };
 #endif

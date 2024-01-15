@@ -6,13 +6,13 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 13:32:07 by eemuston          #+#    #+#             */
-/*   Updated: 2023/12/18 10:09:05 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/01/15 09:02:41 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Character.hpp"
 
-Character::Character(std::string name)
+Character::Character(std::string name) : _name(name)
 {
 	std::cout << "Character constructor called" << std::endl;
 	for (int i = 0; i < 4; i++)

@@ -6,7 +6,7 @@ OBJS= main.o AMateria.o Ice.o Cure.o Character.o MateriaSource.o
 
 CC=c++
 
-CFLAGS= -Wall -Wextra -Werror -std=c++98
+CFLAGS= -Wall -Wextra -Werror
 
 all: $(NAME)
 

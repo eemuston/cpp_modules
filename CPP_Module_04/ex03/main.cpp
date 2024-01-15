@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 12:29:28 by eemuston          #+#    #+#             */
-/*   Updated: 2023/12/11 15:53:41 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/01/15 09:12:07 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,6 @@ int main()
 	delete bob;
 	delete me;
 	delete src;
+	
 	return 0;
 }
