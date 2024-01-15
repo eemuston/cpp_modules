@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 13:32:07 by eemuston          #+#    #+#             */
-/*   Updated: 2024/01/15 09:02:41 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/01/15 12:23:16 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ Character::Character(Character const & src)
 Character::~Character(void)
 {
 	std::cout << "Character destructor called" << std::endl;
+	for (int i = 0; i < 4; i++)
+	{
+		if (_materia[i] != NULL)
+			delete _materia[i];
+	}
 }
 
 Character & Character::operator=(Character const & rhs)
@@ -62,7 +67,9 @@ void Character::equip(AMateria* m)
 void Character::unequip(int idx)
 {
 	if (idx >= 0 && idx < 4)
+	{
 		_materia[idx] = NULL;
+	}
 }
 
 void Character::use(int idx, ICharacter& target)

@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 12:39:22 by eemuston          #+#    #+#             */
-/*   Updated: 2023/12/12 18:58:33 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/01/15 14:27:06 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,13 @@ MateriaSource::MateriaSource(MateriaSource const & src)
 MateriaSource::~MateriaSource(void)
 {
 	std::cout << "MateriaSource destructor called" << std::endl;
+	int i = 0;
+	while (i < 4)
+	{
+		if (_materia[i] != NULL)
+			delete _materia[i];
+		i++;
+	}
 }
 
 MateriaSource & MateriaSource::operator=(MateriaSource const & rhs)
@@ -43,12 +50,18 @@ MateriaSource & MateriaSource::operator=(MateriaSource const & rhs)
 
 void MateriaSource::learnMateria(AMateria* m)
 {
+	
 	for (int i = 0; i < 4; i++)
 	{
 		if (_materia[i] == NULL)
 		{
 			_materia[i] = m;
 			break ;
+		}
+		if (i == 3)
+		{
+			std::cout << "MateriaSource is full" << std::endl;
+			delete m;
 		}
 	}
 }
