@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 13:32:10 by eemuston          #+#    #+#             */
-/*   Updated: 2024/01/15 12:23:22 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/01/15 14:56:52 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ class Character : public ICharacter
 	private:
 		std::string _name;
 		AMateria *_materia[4];
+		AMateria *_unequipped[15];
 };
 
 #endif

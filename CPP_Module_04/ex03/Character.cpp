@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 13:32:07 by eemuston          #+#    #+#             */
-/*   Updated: 2024/01/15 12:23:16 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/01/15 15:07:04 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,35 @@
 
 Character::Character(std::string name) : _name(name)
 {
-	std::cout << "Character constructor called" << std::endl;
+	//std::cout << "Character constructor called" << std::endl;
 	for (int i = 0; i < 4; i++)
 		_materia[i] = NULL;
 }
 
 Character::Character(Character const & src)
 {
-	std::cout << "Character copy constructor called" << std::endl;
+	//std::cout << "Character copy constructor called" << std::endl;
 	*this = src;
 }
 
 Character::~Character(void)
 {
-	std::cout << "Character destructor called" << std::endl;
+	//std::cout << "Character destructor called" << std::endl;
 	for (int i = 0; i < 4; i++)
 	{
 		if (_materia[i] != NULL)
 			delete _materia[i];
 	}
+	for (int k = 0; k < 15; k++)
+	{
+		if (_unequipped[k] != NULL)
+			delete _unequipped[k];
+	}
 }
 
 Character & Character::operator=(Character const & rhs)
 {
-	std::cout << "Character assignation operator called" << std::endl;
+	//std::cout << "Character assignation operator called" << std::endl;
 	if (this != &rhs)
 	{
 		_name = rhs._name;
@@ -68,6 +73,14 @@ void Character::unequip(int idx)
 {
 	if (idx >= 0 && idx < 4)
 	{
+		for (int i = 0; i < 15; i++)
+		{
+			if (_unequipped[i] == NULL)
+			{
+				_unequipped[i] = _materia[idx];
+				break ;
+			}
+		}
 		_materia[idx] = NULL;
 	}
 }

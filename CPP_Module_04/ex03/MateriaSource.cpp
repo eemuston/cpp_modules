@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 12:39:22 by eemuston          #+#    #+#             */
-/*   Updated: 2024/01/15 14:27:06 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/01/15 15:06:30 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 MateriaSource::MateriaSource(void)
 {
-	std::cout << "MateriaSource constructor called" << std::endl;
+	//std::cout << "MateriaSource constructor called" << std::endl;
 	for (int i = 0; i < 4; i++)
 		_materia[i] = NULL;
 }
 
 MateriaSource::MateriaSource(MateriaSource const & src)
 {
-	std::cout << "MateriaSource copy constructor called" << std::endl;
+	//std::cout << "MateriaSource copy constructor called" << std::endl;
 	*this = src;
 }
 
 MateriaSource::~MateriaSource(void)
 {
-	std::cout << "MateriaSource destructor called" << std::endl;
+	//std::cout << "MateriaSource destructor called" << std::endl;
 	int i = 0;
 	while (i < 4)
 	{
@@ -39,7 +39,7 @@ MateriaSource::~MateriaSource(void)
 
 MateriaSource & MateriaSource::operator=(MateriaSource const & rhs)
 {
-	std::cout << "MateriaSource assignation operator called" << std::endl;
+	//std::cout << "MateriaSource assignation operator called" << std::endl;
 	if (this != &rhs)
 	{
 		for (int i = 0; i < 4; i++)

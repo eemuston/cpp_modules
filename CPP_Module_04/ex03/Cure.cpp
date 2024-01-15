@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 12:41:29 by eemuston          #+#    #+#             */
-/*   Updated: 2024/01/15 12:04:17 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/01/15 15:06:56 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,23 @@
 
 Cure::Cure(void) : AMateria("cure")
 {
-	std::cout << "Cure constructor called" << std::endl;
+	//std::cout << "Cure constructor called" << std::endl;
 }
 
 Cure::Cure(Cure const &src) : AMateria("cure")
 {
-	std::cout << "Cure copy constructor called" << std::endl;
+	//std::cout << "Cure copy constructor called" << std::endl;
 	*this = src;
 }
 
 Cure::~Cure(void)
 {
-	std::cout << "Cure destructor called" << std::endl;
+	//std::cout << "Cure destructor called" << std::endl;
 }
 
 Cure &Cure::operator=(Cure const &rhs)
 {
-	std::cout << "Cure assignation operator called" << std::endl;
+	//std::cout << "Cure assignation operator called" << std::endl;
 	if (this != &rhs)
 	{
 		this->_type = rhs._type;
