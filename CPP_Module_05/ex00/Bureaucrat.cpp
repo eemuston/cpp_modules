@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:45:52 by eemuston          #+#    #+#             */
-/*   Updated: 2024/02/05 12:55:33 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/02/06 07:47:12 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void Bureaucrat::decrementGrade(void)
 	}
 }
 
-std::ostream &operator<<(std::ostream &o, Bureaucrat const &src)
+std::ostream &operator<<(std::ostream &o, Bureaucrat &src)
 {
 	o << src.getName() << ", bureaucrat grade " << src.getGrade() << std::endl;
 	return(o);

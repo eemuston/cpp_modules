@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:46:09 by eemuston          #+#    #+#             */
-/*   Updated: 2024/02/05 12:55:26 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/02/08 09:23:47 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ class Bureaucrat
 		};
 		class GradeTooLowException : public std::exception
 		{
-
+			
 		};
 };
 
-std::ostream &operator<<(std::ostream &o, Bureaucrat const &src);
+std::ostream &operator<<(std::ostream &o, Bureaucrat &src);
 
 #endif
