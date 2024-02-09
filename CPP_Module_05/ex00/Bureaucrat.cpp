@@ -6,11 +6,38 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:45:52 by eemuston          #+#    #+#             */
-/*   Updated: 2024/02/06 07:47:12 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/02/09 17:45:37 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+
+Bureaucrat::Bureaucrat() : _name("default"), _grade(150)
+{
+}
+
+Bureaucrat::Bureaucrat(std::string const name) : _name(name), _grade(150)
+{
+}
+
+Bureaucrat::Bureaucrat(int grade) : _name("default")
+{
+	try
+	{
+		if (grade > 150)
+			throw GradeTooLowException();
+		if (grade < 1)
+			throw GradeTooHighException();
+	}
+	catch (GradeTooHighException &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	catch (GradeTooLowException &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+}
 
 Bureaucrat::Bureaucrat(std::string const name, int grade) : _name(name), _grade(grade)
 {
@@ -21,13 +48,13 @@ Bureaucrat::Bureaucrat(std::string const name, int grade) : _name(name), _grade(
 		if (grade < 1)
 			throw GradeTooHighException();
 	}
-	catch (GradeTooHighException)
+	catch (GradeTooHighException &e)
 	{
-		std::cout << "Grade of the bureaucrat is too high" << std::endl;
+		std::cout << e.what() << std::endl;
 	}
-	catch (GradeTooLowException)
+	catch (GradeTooLowException &e)
 	{
-		std::cout << "Grade of the bureaucrat is too low" << std::endl;
+		std::cout << e.what() << std::endl;
 	}
 }
 
@@ -59,11 +86,12 @@ int Bureaucrat::getGrade(void)
 
 void Bureaucrat::incrementGrade(void)
 {
-	_grade--;
 	try
 	{
-		if (_grade < 1)
+		if (_grade <= 1)
 			throw GradeTooHighException();
+		else
+			_grade--;
 	}
 	catch (GradeTooHighException)
 	{
@@ -73,16 +101,27 @@ void Bureaucrat::incrementGrade(void)
 
 void Bureaucrat::decrementGrade(void)
 {
-	_grade++;
 	try
 	{
-		if (_grade > 150)
+		if (_grade >= 150)
 			throw GradeTooLowException();
+		else
+			_grade++;
 	}
 	catch (GradeTooLowException)
 	{
 		std::cout << "Grade of the bureaucrat is too low" << std::endl;
 	}
+}
+
+const char *Bureaucrat::GradeTooHighException::what() const throw()
+{
+	return("Grade of the bureaucrat is too high");
+}
+
+const char *Bureaucrat::GradeTooLowException::what() const throw()
+{
+	return("Grade of the bureaucrat is too low");
 }
 
 std::ostream &operator<<(std::ostream &o, Bureaucrat &src)

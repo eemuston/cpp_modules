@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:46:29 by eemuston          #+#    #+#             */
-/*   Updated: 2024/02/06 07:47:50 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/02/09 17:46:05 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,39 @@
 
 int main(void)
 {
-	Bureaucrat* Bob = new Bureaucrat("bob", 15);
+	Bureaucrat *jusa = new Bureaucrat("Jussi", 1);
+	Bureaucrat *masa = new Bureaucrat("Matti", 150);
 
-	delete Bob;
+	std::cout << *jusa;
+
+	jusa->incrementGrade();
+
+	std::cout << *jusa;
+
+	jusa->incrementGrade();
+
+	std::cout << *jusa;
+	
+	jusa->decrementGrade();
+
+	std::cout << *jusa;
+
+	delete jusa;
+
+	std::cout << *masa;
+
+	masa->decrementGrade();
+
+	std::cout << *masa;
+
+	masa->decrementGrade();
+
+	std::cout << *masa;
+
+	masa->incrementGrade();
+
+	std::cout << *masa;
+
+	delete masa;
 	return (0);
 }
