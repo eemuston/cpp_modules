@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 14:32:21 by eemuston          #+#    #+#             */
-/*   Updated: 2024/02/10 14:33:00 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/02/12 10:46:49 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class RobotomyRequestForm : public AForm
 		~RobotomyRequestForm();
 
 		std::string getTarget(void) const;
-		void execute(Bureaucrat &Bureaucrat);
+		void execute(Bureaucrat const & executor) const;
 };
 
 

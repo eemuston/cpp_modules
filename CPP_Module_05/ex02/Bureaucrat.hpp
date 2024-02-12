@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:46:09 by eemuston          #+#    #+#             */
-/*   Updated: 2024/02/09 20:03:54 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/02/12 11:26:11 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 # define BUREAUCRAT_HPP
 # include <iostream>
 # include <string>
-# include "Form.hpp"
+# include "AForm.hpp"
 
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -32,11 +32,12 @@ class Bureaucrat
 		Bureaucrat &operator=(Bureaucrat const &src);
 		~Bureaucrat();
 		
-		std::string const getName(void);
-		int getGrade(void);
+		std::string const getName(void) const;
+		int getGrade(void) const;
 		void incrementGrade(void);
 		void decrementGrade(void);
-		void signForm(Form &Form);
+		void signForm(AForm &Form);
+		void executeForm(AForm const &form);
 		
 		class GradeTooHighException : public std::exception
 		{

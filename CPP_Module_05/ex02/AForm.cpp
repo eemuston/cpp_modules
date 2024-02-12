@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 18:55:50 by eemuston          #+#    #+#             */
-/*   Updated: 2024/02/10 13:57:25 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/02/12 11:45:16 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,22 +47,22 @@ const char *AForm::GradeTooLowException::what() const throw()
 	return("Grade of the Form is too low");
 }
 
-std::string const AForm::getName(void)
+std::string const AForm::getName(void) const
 {
 	return(_name);
 }
 
-bool AForm::getIsSigned(void)
+bool AForm::getIsSigned(void) const
 {
 	return(_signed);
 }
 
-int AForm::getSignGrade(void)
+int AForm::getSignGrade(void) const
 {
 	return(_signGrade);
 }
 
-int AForm::getExecutionGrade(void)
+int AForm::getExecutionGrade(void) const
 {
 	return(_executionGrade);
 }

@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 13:50:23 by eemuston          #+#    #+#             */
-/*   Updated: 2024/02/10 14:34:27 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/02/12 13:33:09 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "AForm.hpp"
 # include "Bureaucrat.hpp"
+# include <fstream>
 
 class ShrubberyCreationForm : public AForm
 {
@@ -27,7 +28,7 @@ class ShrubberyCreationForm : public AForm
 		~ShrubberyCreationForm();
 
 		std::string getTarget(void) const;
-		void execute(Bureaucrat &Bureaucrat);
+		void execute(Bureaucrat const & executor) const;
 };
 
 

@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 13:50:12 by eemuston          #+#    #+#             */
-/*   Updated: 2024/02/10 14:36:13 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/02/12 13:48:16 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,18 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 std::string ShrubberyCreationForm::getTarget(void) const
 {
 	return(_target);
+}
+
+void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
+{
+	if (executor.getGrade() <= this->getExecutionGrade())
+	{
+		std::ofstream shrubberyfile(_target + "_shrubbery");
+
+		shrubberyfile << "    *\n   /|\\\n  / | \\\n /  |  \\\n/   |   \\\n";
+		
+		shrubberyfile.close();
+	}
+	else
+		throw GradeTooLowException();
 }

@@ -1,8 +1,8 @@
 NAME= bureaucrat
 
-SRCS= main.cpp Bureaucrat.cpp Form.cpp PresidentialPardonForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp
+SRCS= main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp
 
-OBJS= main.o Bureaucrat.o Form.o PresidentialPardonForm.o ShrubberyCreationForm.o RobotomyRequestForm.o
+OBJS= main.o Bureaucrat.o AForm.o PresidentialPardonForm.o ShrubberyCreationForm.o RobotomyRequestForm.o
 
 CC=c++
 

@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 14:00:06 by eemuston          #+#    #+#             */
-/*   Updated: 2024/02/10 14:32:12 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/02/12 10:46:44 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class PresidentialPardonForm : public AForm
 		~PresidentialPardonForm();
 
 		std::string getTarget(void) const;
-		void execute(Bureaucrat &Bureaucrat);
+		void execute(Bureaucrat const & executor) const;
 };
 
 

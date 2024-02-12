@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:45:52 by eemuston          #+#    #+#             */
-/*   Updated: 2024/02/09 20:26:59 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/02/12 13:24:32 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,12 @@ Bureaucrat::~Bureaucrat()
 
 }
 
-std::string const Bureaucrat::getName(void)
+std::string const Bureaucrat::getName(void) const
 {
 	return(_name);
 }
 
-int Bureaucrat::getGrade(void)
+int Bureaucrat::getGrade(void) const
 {
 	return(_grade);
 }
@@ -96,7 +96,7 @@ const char *Bureaucrat::GradeTooLowException::what() const throw()
 	return("Grade of the bureaucrat is too low");
 }
 
-void Bureaucrat::signForm(Form &Form)
+void Bureaucrat::signForm(AForm &Form)
 {
 	if (Form.getIsSigned() == true)
 	{
@@ -106,6 +106,18 @@ void Bureaucrat::signForm(Form &Form)
 	if (_grade <= Form.getSignGrade())
 		std::cout << _name << " signed " << Form.getName() << std::endl;
 	Form.beSigned(*this);
+}
+
+void Bureaucrat::executeForm(AForm const & form)
+{
+	if (form.getIsSigned() == false)
+	{
+		std::cout << "Form " << form.getName() << " has not been signed so it can't be executed!" << std::endl;
+		return ;
+	}
+	if (_grade <= form.getExecutionGrade())
+		std::cout << _name << " executed " << form.getName() << std::endl;
+	form.execute(*this);
 }
 
 std::ostream &operator<<(std::ostream &o, Bureaucrat &src)
