@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 14:33:04 by eemuston          #+#    #+#             */
-/*   Updated: 2024/02/12 13:19:39 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/02/13 12:21:28 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(RobotomyRequestForm const &s
 
 RobotomyRequestForm::~RobotomyRequestForm()
 {
-	
 }
 
 std::string RobotomyRequestForm::getTarget(void) const

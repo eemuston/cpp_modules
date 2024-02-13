@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 13:50:12 by eemuston          #+#    #+#             */
-/*   Updated: 2024/02/12 13:48:16 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/02/13 12:21:34 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(ShrubberyCreationForm co
 
 ShrubberyCreationForm::~ShrubberyCreationForm()
 {
-	
 }
 
 std::string ShrubberyCreationForm::getTarget(void) const

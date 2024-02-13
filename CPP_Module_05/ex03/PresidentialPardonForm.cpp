@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 14:00:04 by eemuston          #+#    #+#             */
-/*   Updated: 2024/02/12 11:52:02 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/02/13 12:29:50 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(PresidentialPardonForm
 
 PresidentialPardonForm::~PresidentialPardonForm()
 {
-	
 }
 
 std::string PresidentialPardonForm::getTarget(void) const

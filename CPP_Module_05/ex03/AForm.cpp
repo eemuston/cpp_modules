@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 18:55:50 by eemuston          #+#    #+#             */
-/*   Updated: 2024/02/12 11:45:16 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/02/13 12:20:36 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ AForm &AForm::operator=(AForm const &src)
 
 AForm::~AForm()
 {
-	
 }
 
 const char *AForm::GradeTooHighException::what() const throw()
