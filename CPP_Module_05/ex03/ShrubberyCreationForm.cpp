@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 13:50:12 by eemuston          #+#    #+#             */
-/*   Updated: 2024/02/13 12:21:34 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/02/13 19:48:14 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,11 @@ std::string ShrubberyCreationForm::getTarget(void) const
 	return(_target);
 }
 
+const char *ShrubberyCreationForm::GradeTooLowExecutorException::what() const throw()
+{
+	return("Grade of the Executor is too low");
+}
+
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
 	if (executor.getGrade() <= this->getExecutionGrade())
@@ -48,5 +53,5 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 		shrubberyfile.close();
 	}
 	else
-		throw GradeTooLowException();
+		throw GradeTooLowExecutorException();
 }

@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 14:33:04 by eemuston          #+#    #+#             */
-/*   Updated: 2024/02/12 13:19:39 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/02/13 19:47:55 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRequestForm", 72, 45), _target(target) 
 {
-	
+	srand(time(NULL));
 }
 
 RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &src) : AForm("RobotomyRequestForm", 72, 45), _target(src._target) 
@@ -38,6 +38,11 @@ std::string RobotomyRequestForm::getTarget(void) const
 	return(_target);
 }
 
+const char *RobotomyRequestForm::GradeTooLowExecutorException::what() const throw()
+{
+	return("Grade of the Executor is too low");
+}
+
 void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
 	if (executor.getGrade() <= this->getExecutionGrade())
@@ -49,5 +54,5 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 			std::cout << "Robotomy failed" << std::endl;
 	}
 	else
-		throw GradeTooLowException();
+		throw GradeTooLowExecutorException();
 }

@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 13:50:23 by eemuston          #+#    #+#             */
-/*   Updated: 2024/02/12 13:33:09 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/02/13 19:45:25 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@ class ShrubberyCreationForm : public AForm
 
 		std::string getTarget(void) const;
 		void execute(Bureaucrat const & executor) const;
+		class GradeTooLowExecutorException : public std::exception
+		{
+			public:
+				virtual const char *what() const throw();
+		};
 };
 
 

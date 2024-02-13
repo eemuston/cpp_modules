@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 18:55:58 by eemuston          #+#    #+#             */
-/*   Updated: 2024/02/12 11:44:50 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/02/13 19:51:09 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ class AForm
 		AForm(std::string name, int signGrade, int executionGrade);
 		AForm(AForm const &src);
 		AForm &operator=(AForm const &src);
-		~AForm();
+		virtual ~AForm();
 
 		std::string const getName(void) const;
 		bool getIsSigned(void) const;
@@ -51,6 +51,12 @@ class AForm
 		public:
 			virtual const char *what() const throw();
 	};
+	class GradeTooLowExecutorException : public std::exception
+	{
+		public:
+			virtual const char *what() const throw();
+	};
+	
 };
 
 std::ostream &operator<<(std::ostream &o, AForm &src);

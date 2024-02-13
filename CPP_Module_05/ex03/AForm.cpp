@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 18:55:50 by eemuston          #+#    #+#             */
-/*   Updated: 2024/02/13 12:20:36 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/02/13 19:52:55 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,13 @@ void AForm::beSigned(Bureaucrat &Bureaucrat)
 	if (Bureaucrat.getGrade() <= _signGrade)
 		_signed = true;
 	else
-		throw GradeTooLowException();
+		throw GradeTooLowExecutorException();
+		
+}
+
+const char *AForm::GradeTooLowExecutorException::what() const throw()
+{
+	return("Grade of the Executor is too low");
 }
 
 std::ostream &operator<<(std::ostream &o, AForm &src)

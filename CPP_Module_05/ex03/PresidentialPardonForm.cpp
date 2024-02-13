@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 14:00:04 by eemuston          #+#    #+#             */
-/*   Updated: 2024/02/13 12:29:50 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/02/13 19:48:06 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,16 @@ std::string PresidentialPardonForm::getTarget(void) const
 	return(_target);
 }
 
+const char *PresidentialPardonForm::GradeTooLowExecutorException::what() const throw()
+{
+	return("Grade of the Executor is too low");
+}
+
 void PresidentialPardonForm::execute(Bureaucrat const & executor) const
 {
 	if (executor.getGrade() <= this->getExecutionGrade())
 		std::cout << _target << " has been pardoned by Zaphod Beeblebrox!" << std::endl;
 	else
-		throw GradeTooLowException();
+		throw GradeTooLowExecutorException();
 }
 

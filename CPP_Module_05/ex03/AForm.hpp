@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 18:55:58 by eemuston          #+#    #+#             */
-/*   Updated: 2024/02/13 12:13:29 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/02/13 19:53:08 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,11 @@ class AForm
 			virtual const char *what() const throw();
 	};
 	class GradeTooLowException : public std::exception
+	{
+		public:
+			virtual const char *what() const throw();
+	};
+	class GradeTooLowExecutorException : public std::exception
 	{
 		public:
 			virtual const char *what() const throw();
