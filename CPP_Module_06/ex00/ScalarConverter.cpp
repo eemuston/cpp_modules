@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:04:27 by eemuston          #+#    #+#             */
-/*   Updated: 2024/02/26 14:27:58 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/02/26 14:45:05 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,13 +190,13 @@ void ScalarConverter::convert(std::string src)
 			print(src[0]);
 			break ;
 		case 2:
-			print(std::stod(src));
+			print(std::stold(src));
 			break ;
 		case 3:
-			print(std::stod(src));
+			print(std::stold(src));
 			break ;
 		case 4:
-			print(std::stod(src));
+			print(std::stold(src));
 			break ;
 		case 5:
 			printPseudo(src);
