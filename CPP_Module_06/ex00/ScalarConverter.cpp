@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:04:27 by eemuston          #+#    #+#             */
-/*   Updated: 2024/02/26 14:45:05 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/02/26 15:19:53 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,6 +184,8 @@ void ScalarConverter::convert(std::string src)
 {
 	_type = checkType(src);
 	
+	if (src.length() > 4912)
+		_type = 0;
 	switch(_type)
 	{
 		case 1:
