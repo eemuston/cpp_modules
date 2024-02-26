@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 15:58:13 by eemuston          #+#    #+#             */
-/*   Updated: 2024/02/26 16:35:32 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/02/26 16:37:25 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ int main(void)
 	
 	Data *ptr = Serializer::deserialize(serialized);
 	
-	std::cout << "Data Data address: " << &ptr << std::endl;
-	std::cout << "Data Name: " << ptr->name << std::endl;
-	std::cout << "Data School: " << ptr->school << std::endl;
-	std::cout << "Data Level: " << ptr->lvl << std::endl;
-	std::cout << "Data Completed projects: " << ptr->completedProjects << std::endl;
-	std::cout << "Data lastProject: " << ptr->lastProject << std::endl;
+	std::cout << "Deserialized Data Data address: " << &ptr << std::endl;
+	std::cout << "Deserialized Data Name: " << ptr->name << std::endl;
+	std::cout << "Deserialized Data School: " << ptr->school << std::endl;
+	std::cout << "Deserialized Data Level: " << ptr->lvl << std::endl;
+	std::cout << "Deserialized Data Completed projects: " << ptr->completedProjects << std::endl;
+	std::cout << "Deserialized Data lastProject: " << ptr->lastProject << std::endl;
 }
