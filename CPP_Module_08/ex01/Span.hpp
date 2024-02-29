@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 16:04:19 by eemuston          #+#    #+#             */
-/*   Updated: 2024/02/29 11:15:41 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/02/29 13:44:48 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,10 @@ class Span
 		
 
 		void	addNumber(int number);
+		void	addNumbers(int smallest, int range, int amount);
 		int		shortestSpan(void);
 		int		longestSpan(void);
+		void	printSpan(void);
 
 		class SpanFullException : public std::exception
 		{

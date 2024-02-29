@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 16:04:12 by eemuston          #+#    #+#             */
-/*   Updated: 2024/02/29 12:25:42 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/02/29 13:50:30 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,30 @@ void Span::addNumber(int number)
 		throw SpanFullException();
 	_list.push_back(number);
 	_spaceUsed++;
+}
+
+void Span::addNumbers(int smallest, int range, int amount)
+{
+	int i = 0;
+	int num;
+	srand((unsigned) time(NULL));
+	while (i < amount)
+	{
+		num = smallest + (rand() % range);
+		addNumber(num);
+		i++;
+	}
+}
+
+void Span::printSpan(void)
+{
+	std::list<int>::iterator it = _list.begin();
+	while (it != _list.end())
+	{
+		std::cout << *it << " ";
+		it++;
+	}
+	std::cout << std::endl;
 }
 
 int	Span::longestSpan(void)
