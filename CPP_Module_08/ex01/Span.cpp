@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 16:04:12 by eemuston          #+#    #+#             */
-/*   Updated: 2024/02/29 11:35:31 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/02/29 12:25:42 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,23 +61,24 @@ int	Span::longestSpan(void)
 {
 	if (_spaceUsed < 2)
 		throw SpanTooShortException();
-	std::sort(_list.begin(), _list.end());
-	return (*_list.end() - *_list.begin());
+	return (*--_list.end() - *_list.begin());
 }
 
 int	Span::shortestSpan(void)
 {
 	if (_spaceUsed < 2)
 		throw SpanTooShortException();
-	std::sort(_list.begin(), _list.end());
+	_list.sort();
 	std::list<int>::iterator it = _list.begin();
 	int shortestSpan = *++it - *--it;
-	int temp = 0;
-	while (it != _list.end())
+	int temp;
+	std::list<int>::iterator last = _list.end();
+	last--;
+	while (it != last)
 	{
 		temp = *++it - *--it;
-		if (temp < shortestSpan)
-			temp = shortestSpan;
+		if (shortestSpan > temp)
+			shortestSpan = temp;
 		it++;
 	}
 	return (shortestSpan);
