@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 16:04:12 by eemuston          #+#    #+#             */
-/*   Updated: 2024/02/29 13:50:30 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/02/29 18:32:24 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ int	Span::longestSpan(void)
 {
 	if (_spaceUsed < 2)
 		throw SpanTooShortException();
+	_list.sort();
 	return (*--_list.end() - *_list.begin());
 }
 
