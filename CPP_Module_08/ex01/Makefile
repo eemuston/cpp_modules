@@ -1,8 +1,8 @@
 NAME= span
 
-SRCS= main.cpp
+SRCS= main.cpp Span.cpp
 
-OBJS= main.o
+OBJS= main.o Span.o
 
 CC= c++
 
