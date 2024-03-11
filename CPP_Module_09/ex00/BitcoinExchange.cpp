@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/01 11:44:22 by eemuston          #+#    #+#             */
-/*   Updated: 2024/03/11 02:11:43 by eemuston         ###   ########.fr       */
+/*   Created: 2024/03/11 01:37:49 by eemuston          #+#    #+#             */
+/*   Updated: 2024/03/11 06:00:17 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-int main(int argc, char **argv)
+void calcutateExchangeRate(std::string inputfile)
 {
-	if (argc == 2)
-		calcutateExchangeRate(argv[1]);
-	std::cout << "Usage: ./btc [input_file]" << std::endl;
-	return (-1);	
+	std::ifstream file(inputfile);
+	if(!file.is_open())
+	{
+		std::cout << "WATAFAK!" << std::endl;
+		return ;
+	}
+	std::string line;
+	std::getline(file, line);
+	while (std::getline(file, line))
+	{
+		
+	}
 }

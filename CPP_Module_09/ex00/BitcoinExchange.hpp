@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 11:45:02 by eemuston          #+#    #+#             */
-/*   Updated: 2024/03/01 11:49:45 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/03/11 01:52:40 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,7 @@
 
 # include <iostream>
 # include <fstream>
+
+void calcutateExchangeRate(std::string inputfile);
 
 #endif

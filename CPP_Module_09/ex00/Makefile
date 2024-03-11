@@ -1,8 +1,8 @@
 NAME= btc
 
-SRCS= main.cpp
+SRCS= main.cpp BitcoinExchange.cpp
 
-OBJS= main.o
+OBJS= main.o BitcoinExchange.o
 
 CC= c++
 
