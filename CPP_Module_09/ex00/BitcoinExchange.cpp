@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 01:37:49 by eemuston          #+#    #+#             */
-/*   Updated: 2024/03/15 10:49:04 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/03/18 18:42:21 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,13 @@ void BitcoinExchange::csv_parser(void)
 	std::getline(file, line);
 	while (std::getline(file, line))
 	{
-		time_t date = 0; //conversion here;
-
-		double value = 0;//conversion here;
+		time_t date = stringToTime(line.substr(0, line.find(",")));
+			if (date == -1)
+				return ;
+		double value = stringToDouble(line.substr(line.find(",") + 1));
+			if (value == -1)
+				return ;
+		values.insert(std::pair<time_t, double>(date, value));
 	}
 	file.close();
 }
@@ -44,9 +48,10 @@ void BitcoinExchange::calcutateExchangeRate(std::string inputfile)
 	std::getline(file, line);
 	while (std::getline(file, line))
 	{
-		time_t date = 0; //conversion here;
+		time_t date = stringToTime(line.substr(0, line.find("|")));
 
-		double value = 0;//conversion here;
+		double value = stringToDouble(line.substr(line.find("|") + 1));
+		
 		printValue(date, value);
 	}
 	file.close();
@@ -70,10 +75,18 @@ time_t BitcoinExchange::stringToTime(std::string date)
 
 std::string BitcoinExchange::timeToDate(time_t date)
 {
-	
+	char buf[80];
+	strftime(buf, 80, "%Y-%m-%d", localtime(&date));
+	return (buf);
 }
 
 double BitcoinExchange::stringToDouble(std::string value)
 {
-	
+	std::stringstream strstream;
+
+	strstream << value;
+	double num;
+	while (!(strstream >> num) || strstream.fail() || !strstream.eof())
+		return (-1);
+	return (num);
 }
