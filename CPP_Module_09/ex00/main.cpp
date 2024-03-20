@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 11:44:22 by eemuston          #+#    #+#             */
-/*   Updated: 2024/03/15 09:00:20 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/03/20 12:16:45 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,19 @@
 
 int main(int argc, char **argv)
 {
-	if (argc == 2)
+	try
 	{
-		BitcoinExchange f;
-		f.calcutateExchangeRate(argv[1]);
-		return(0);
+		if (argc == 2)
+		{
+			BitcoinExchange f;
+			f.calcutateExchangeRate(argv[1]);
+			return(0);
+		}
+	}
+	catch (std::exception & e)
+	{
+		std::cerr << e.what() << std::endl;
+		return (-1);
 	}
 	std::cout << "Usage: ./btc [input_file]" << std::endl;
 	return (-1);	

@@ -6,70 +6,109 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 01:37:49 by eemuston          #+#    #+#             */
-/*   Updated: 2024/03/18 18:42:21 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/03/20 12:49:25 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
+BitcoinExchange::BitcoinExchange(void)
+{
+	csv_parser();
+}
+
+BitcoinExchange::~BitcoinExchange(void)
+{}
+
 void BitcoinExchange::csv_parser(void)
 {
-	std::ifstream file("data.csv");
-	if(!file.is_open())
+	try
 	{
-		std::cout << "The csv file can't be opened!" << std::endl;
-		return ;
+		std::ifstream file("data.csv");
+		if(!file.is_open())
+			throw InvalidFileException();
+		std::string line;
+		std::getline(file, line);
+		while (std::getline(file, line))
+		{
+			time_t date = stringToTime(line.substr(0, line.find(",")));
+				if (date == -1)
+					throw BadInputException();
+			double value = stringToDouble(line.substr(line.find(",") + 1));
+				if (value == -1)
+					throw BadInputException();
+			values.insert(std::pair<time_t, double>(date, value));
+		}
+		file.close();
 	}
-	std::string line;
-	std::getline(file, line);
-	while (std::getline(file, line))
+	catch(const std::exception& e)
 	{
-		time_t date = stringToTime(line.substr(0, line.find(",")));
-			if (date == -1)
-				return ;
-		double value = stringToDouble(line.substr(line.find(",") + 1));
-			if (value == -1)
-				return ;
-		values.insert(std::pair<time_t, double>(date, value));
+		std::cerr << e.what() << '\n';
 	}
-	file.close();
 }
 
 void BitcoinExchange::calcutateExchangeRate(std::string inputfile)
 {
-	csv_parser();
 	std::ifstream file(inputfile);
 	if(!file.is_open())
 	{
-		std::cout << "Input file can't be opened!" << std::endl;
-		return ;
+		throw InvalidFileException();
 	}
 	std::string line;
 	std::getline(file, line);
 	while (std::getline(file, line))
 	{
-		time_t date = stringToTime(line.substr(0, line.find("|")));
-
-		double value = stringToDouble(line.substr(line.find("|") + 1));
-		
-		printValue(date, value);
+		time_t date;
+		double value;
+		try
+		{
+			date = stringToTime(line.substr(0, line.find(" |")));
+			value = stringToDouble(line.substr(line.find("|") + 1));
+		}
+		catch(const std::exception& e)
+		{
+			std::cout << "Bad input!" << std::endl;
+			continue;
+		}
+		if (date == -1)
+			std::cout << "Bad input!" << std::endl;
+		else
+			printValue(date, value);
 	}
 	file.close();
 }
 
 void BitcoinExchange::printValue(time_t date, double value)
 {
-	
+	std::map<time_t, double>::iterator closestDate = values.lower_bound(date);
+	double closestValue = closestDate->second;
+	if (closestDate == values.begin() && date < closestDate->first)
+		closestValue = 0;
+	else if (closestDate->first != date)
+		closestValue = std::prev(closestDate)->second;
+	if (value > 0 && value < 1000)
+	{
+			std::cout << timeToDate(date) << " => " << value << " = " << closestValue * value << std::endl;
+	}
+	else if (value <= 0) {
+			std::cerr << "Negative number!"<< std::endl;
+	}
+	else if (value >= 1000) {
+			std::cerr << "Too big number" << std::endl;
+		}
 }
 
 time_t BitcoinExchange::stringToTime(std::string date)
 {
-	std::tm tm{};
+	std::tm tm = {};
 	std::istringstream strstream(date);
 	strstream >> std::get_time(&tm, "%Y-%m-%d");
 	if (strstream.fail())
 		return -1;
 	time_t time = mktime(&tm);
+	std::string const temp = timeToDate(time);
+	if (temp.compare(date))
+		return (-1);
 	return (time);
 }
 
@@ -87,6 +126,21 @@ double BitcoinExchange::stringToDouble(std::string value)
 	strstream << value;
 	double num;
 	while (!(strstream >> num) || strstream.fail() || !strstream.eof())
-		return (-1);
+		throw BadValueException();
 	return (num);
+}
+
+char const *BitcoinExchange::InvalidFileException::what() const throw()
+{
+	return ("File is invalid!");
+}
+
+char const *BitcoinExchange::BadInputException::what() const throw()
+{
+	return ("Bad Input!");
+}
+
+char const *BitcoinExchange::BadValueException::what() const throw()
+{
+	return ("Bad Value!");
 }
