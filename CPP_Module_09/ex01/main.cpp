@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 13:33:06 by eemuston          #+#    #+#             */
-/*   Updated: 2024/03/20 16:46:28 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/03/21 13:30:08 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@ int main(int argc, char **argv)
 		return (0);
 	}
 	std::cout << "Usage ./RPN [operands and operators]"	<< std::endl;
-	return -1;
+	return (-1);
 }
