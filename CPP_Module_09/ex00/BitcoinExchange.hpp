@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 11:45:02 by eemuston          #+#    #+#             */
-/*   Updated: 2024/03/20 12:47:51 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/03/21 13:35:05 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ class BitcoinExchange
 		std::string timeToDate(time_t date);
 		double stringToDouble(std::string value);
 		void printValue(time_t date, double value);
+		BitcoinExchange(BitcoinExchange const & src);
+		BitcoinExchange & operator=(const BitcoinExchange & src);
 	public:
 		BitcoinExchange(void);
 		~BitcoinExchange(void);
-		BitcoinExchange(BitcoinExchange const & src);
-		BitcoinExchange & operator=(const BitcoinExchange & src);
 
 
 		void calcutateExchangeRate(std::string inputfile);
