@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 13:13:49 by eemuston          #+#    #+#             */
-/*   Updated: 2024/03/23 17:35:50 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/03/23 17:52:18 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ class PmergeMe
 		
 		void fillDeque(char **input);
 		void sortDeque(void);
-		void printDeque(void);
+		//void printDeque(void);
 		void sortPairsDeque(void);
 		void SortLargestNumDeque(void);
 		bool SortedLargestNumDeque(void);
