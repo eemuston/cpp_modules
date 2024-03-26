@@ -6,13 +6,13 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 13:14:10 by eemuston          #+#    #+#             */
-/*   Updated: 2024/03/25 17:53:24 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/03/26 16:39:08 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
-PmergeMe::PmergeMe(void)
+PmergeMe::PmergeMe(void) : _len(0)
 {}
 
 PmergeMe::~PmergeMe(void)
@@ -110,45 +110,25 @@ void PmergeMe::sortPairsVector(void)
 	}
 }
 
-bool PmergeMe::SortedLargestNumVector(void)
+void PmergeMe::SortLargestNumVector(int len)
 {
-	std::vector<std::pair<int, int> >::iterator it = _vector.begin();
-	std::vector<std::pair<int, int> >::iterator ite = _vector.begin();
-	
-	while (it != _vector.end())
+	if (len == 0)
+		return;
+	SortLargestNumVector(len - 1);
+	std::pair<int, int> pair = _vector[len];
+	int i = len - 1;
+	while (i >= 0 && _vector[i].second > pair.second)
 	{
-		ite++;
-		if (ite == _vector.end())
-			break ;
-		if (it->second > ite->second)
-			return false;
-		it++;
+		_vector[i + 1] = _vector[i];
+		i--;
 	}
-	return true;
-}
-
-void PmergeMe::SortLargestNumVector(void)
-{
-	std::vector<std::pair<int, int> >::iterator it = _vector.begin();
-	std::vector<std::pair<int, int> >::iterator ite = _vector.begin();
-
-	while (it != _vector.end())
-	{
-		ite++;
-		if (ite == _vector.end())
-			break ;
-		if (it->second > ite->second)
-			std::swap(*it, *ite);
-		it++;
-	}
-	if (!SortedLargestNumVector())
-		SortLargestNumVector();
+	_vector[i + 1] = pair;
 }
 
 void PmergeMe::sortVector(void)
 {
 	sortPairsVector();
-	SortLargestNumVector();
+	SortLargestNumVector(_vector.size() - 1);
 	insertSmallerVector();
 }
 
@@ -248,47 +228,29 @@ void PmergeMe::sortPairsDeque(void)
 	}
 }
 
-bool PmergeMe::SortedLargestNumDeque(void)
+void PmergeMe::SortLargestNumDeque(int len)
 {
-	std::deque<std::pair<int, int> >::iterator it = _deque.begin();
-	std::deque<std::pair<int, int> >::iterator ite = _deque.begin();
-	
-	while (it != _deque.end())
-	{
-		ite++;
-		if (ite == _deque.end())
-			break ;
-		if (it->second > ite->second)
-			return false;
-		it++;
-	}
-	return true;
-}
+	if (len == 0)
+		return;
 
-void PmergeMe::SortLargestNumDeque(void)
-{
-	std::deque<std::pair<int, int> >::iterator it = _deque.begin();
-	std::deque<std::pair<int, int> >::iterator ite = _deque.begin();
-
-	while (it != _deque.end())
+	SortLargestNumDeque(len - 1);
+	std::pair<int, int> pair = _deque[len];
+	int i = len - 1;
+	while (i >= 0 && _deque[i].second > pair.second)
 	{
-		ite++;
-		if (ite == _deque.end())
-			break ;
-		if (it->second > ite->second)
-			std::swap(*it, *ite);
-		it++;
+		_deque[i + 1] = _deque[i];
+		i--;
 	}
-	if (!SortedLargestNumDeque())
-		SortLargestNumDeque();
+	_deque[i + 1] = pair;
 }
 
 void PmergeMe::sortDeque(void)
 {
 	sortPairsDeque();
-	SortLargestNumDeque();
+	SortLargestNumDeque(_deque.size() - 1);
 	insertSmallerDeque();
 }
+
 
 void PmergeMe::insertSmallerDeque(void)
 {
@@ -319,43 +281,3 @@ void PmergeMe::insertSmallerDeque(void)
 	// }
 	// std::cout << std::endl;
 }
-
-
-// void PmergeMe::SortLargestNumVector(int start, int end)
-// {
-// 	int next = start;
-// 	while (start < end)
-// 	{
-// 		next++;
-// 		if (next == end)
-// 			break ;
-// 		comp++;
-// 		if (_vector[start].second > _vector[next].second)
-// 			std::swap(_vector[start], _vector[next]);
-// 		start++;
-// 	}
-// }
-
-// void PmergeMe::zoomIn(int start, int end)
-// {
-// 	std::cout << "Start: "<< start << " End :" << end << std::endl;
-	
-//     if (end - start < 2)
-//        	return;
-//     int mid;
-//     if ((end - start) % 2 == 1)
-//         mid = start + (end - start) / 2 - 1;
-//     else
-//         mid = start + (end - start) / 2;
-//     zoomIn(start, mid);
-//     zoomIn(mid, end);
-//    	SortLargestNumVector(start, end);
-// }
-
-// void PmergeMe::sortVector(void)
-// {
-// 	sortPairsVector();
-// 	std::cout << "vector.size" << _vector.size() << std::endl;
-// 	zoomIn(0, _vector.size());
-// 	insertSmallerVector();
-// }

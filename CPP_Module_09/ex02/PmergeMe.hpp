@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 13:13:49 by eemuston          #+#    #+#             */
-/*   Updated: 2024/03/23 17:52:18 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/03/26 16:23:33 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ class PmergeMe
 		int									_oddOneOut;
 		bool								_even;
 		unsigned int						_size;
+		int									_len;
 
 		PmergeMe(PmergeMe const & src);
 		PmergeMe & operator=(PmergeMe const & src);
@@ -36,16 +37,14 @@ class PmergeMe
 		void sortVector(void);
 		void printVector(void);
 		void sortPairsVector(void);
-		void SortLargestNumVector(void);
-		bool SortedLargestNumVector(void);
+		void SortLargestNumVector(int len);
 		void insertSmallerVector(void);
 		
 		void fillDeque(char **input);
 		void sortDeque(void);
 		//void printDeque(void);
 		void sortPairsDeque(void);
-		void SortLargestNumDeque(void);
-		bool SortedLargestNumDeque(void);
+		void SortLargestNumDeque(int len);
 		void insertSmallerDeque(void);
 	public:
 		PmergeMe(void);
