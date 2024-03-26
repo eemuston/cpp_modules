@@ -6,13 +6,61 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 13:34:11 by eemuston          #+#    #+#             */
-/*   Updated: 2024/03/20 17:42:36 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/03/26 16:57:00 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
 
-void ValidateInput(std::string input)
+RPN::RPN(void)
+{}
+
+RPN::~RPN(void)
+{}
+
+void RPN::ReversePolishNotation(std::string input)
+{
+	std::stack<double> stack;
+	unsigned long i = 0;
+	while (i < input.length())
+	{
+		if (std::isdigit(input[i]))
+			stack.push(input[i] - '0');
+	    else if (input[i] == '-')
+		{
+            double operand2 = stack.top(); stack.pop();
+            double operand1 = stack.top(); stack.pop();
+            stack.push(operand1 - operand2);
+        }
+		else if (input[i] == '+')
+		{
+            double operand2 = stack.top(); stack.pop();
+            double operand1 = stack.top(); stack.pop();
+            stack.push(operand1 + operand2);
+        }
+		else if (input[i] == '/')
+		{
+            double operand2 = stack.top(); stack.pop();
+            double operand1 = stack.top(); stack.pop();
+			if (operand2 == 0)
+			{
+				std::cout << "Division by 0 is not allowed!" << std::endl;
+				return ;
+			}
+            stack.push(operand1 / operand2);
+        }
+		else if (input[i] == '*')
+		{
+            double operand2 = stack.top(); stack.pop();
+            double operand1 = stack.top(); stack.pop();
+            stack.push(operand1 * operand2);
+        }
+		i++;
+	}
+	std::cout << stack.top() << std::endl;
+}
+
+void RPN::ValidateInput(std::string input)
 {
 	std::string parsedInput;
 	
@@ -57,46 +105,4 @@ void ValidateInput(std::string input)
 		return ;
 	}
 	ReversePolishNotation(input);
-}
-
-void ReversePolishNotation(std::string input)
-{
-	std::stack<double> stack;
-	unsigned long i = 0;
-	while (i < input.length())
-	{
-		if (std::isdigit(input[i]))
-			stack.push(input[i] - '0');
-	    else if (input[i] == '-')
-		{
-            double operand2 = stack.top(); stack.pop();
-            double operand1 = stack.top(); stack.pop();
-            stack.push(operand1 - operand2);
-        }
-		else if (input[i] == '+')
-		{
-            double operand2 = stack.top(); stack.pop();
-            double operand1 = stack.top(); stack.pop();
-            stack.push(operand1 + operand2);
-        }
-		else if (input[i] == '/')
-		{
-            double operand2 = stack.top(); stack.pop();
-            double operand1 = stack.top(); stack.pop();
-			if (operand2 == 0)
-			{
-				std::cout << "Division by 0 is not allowed!" << std::endl;
-				return ;
-			}
-            stack.push(operand1 / operand2);
-        }
-		else if (input[i] == '*')
-		{
-            double operand2 = stack.top(); stack.pop();
-            double operand1 = stack.top(); stack.pop();
-            stack.push(operand1 * operand2);
-        }
-		i++;
-	}
-	std::cout << stack.top() << std::endl;
 }
