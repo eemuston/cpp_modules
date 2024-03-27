@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 13:13:49 by eemuston          #+#    #+#             */
-/*   Updated: 2024/03/26 16:48:53 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/03/27 14:50:38 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ class PmergeMe
 		PmergeMe(PmergeMe const & src);
 		PmergeMe & operator=(PmergeMe const & src);
 
+		void callVector(char **input);
 		void fillVector(char **input);
 		void sortVector(void);
 		void printVector(void);
@@ -40,6 +41,7 @@ class PmergeMe
 		void SortLargestNumVector(int len);
 		void insertSmallerVector(void);
 		
+		void callDeque(char **input);
 		void fillDeque(char **input);
 		void sortDeque(void);
 		//void printDeque(void);
@@ -51,8 +53,6 @@ class PmergeMe
 		~PmergeMe(void);
 		
 		bool ValidateInput(char **input);
-		void callVector(char **input);
-		void callDeque(char **input);
 };
 
 #endif

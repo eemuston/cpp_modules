@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 13:14:10 by eemuston          #+#    #+#             */
-/*   Updated: 2024/03/26 16:48:47 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/03/27 15:00:02 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,21 @@ bool PmergeMe::ValidateInput(char **input)
 			std::cerr << "Error: Larger than INT MAX!" << std::endl;
 			return false;
 		}
+		unsigned int k = 0;
+		while (input[k])
+		{
+			int checked = std::atoi(input[k]);
+			if (num == checked && i != k)
+			{
+				std::cerr << "Error: Duplicate found!" << std::endl;
+				return false;
+			}
+			k++;
+		}
 		i++;
 	}
+	callVector(input);
+	callDeque(input);
 	return true;
 }
 
