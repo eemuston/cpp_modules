@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 13:34:11 by eemuston          #+#    #+#             */
-/*   Updated: 2024/03/26 16:57:00 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/03/27 17:40:51 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,23 @@ void RPN::ValidateInput(std::string input)
 	unsigned long i = 0;
 	unsigned int operands = 0;
 	unsigned int operators = 0;
+	unsigned int k = 0;
 	while (i < input.length())
 	{
 		if ((std::isdigit(input[i]) && input[i] >= '0' && input[i] <= '9') || (input[i] == '-' || input[i] == '+' || input[i] == '/' || input[i] == '*') || std::iswspace(input[i]))
 		{
 			if (std::isdigit(input[i]))
+			{
+				k = i;
+				while (std::isdigit(input[k]) && input[k] != '\0')
+					k++;
+				if (k - 1 != i)
+				{
+					std::cout << "Not valid input" << std::endl;
+					return ;
+				}
 				operands++;
+			}
 			else if (!std::iswspace(input[i]))
 			{
 				if (operands > 1)
