@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 13:14:10 by eemuston          #+#    #+#             */
-/*   Updated: 2024/03/27 15:00:02 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/03/27 17:44:02 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,14 @@ void PmergeMe::callVector(char **input)
 	_even = true;
 	std::chrono::high_resolution_clock::time_point start, end;
 	std::chrono::duration<double, std::micro> duration;
+	std::cout << "Before: ";
+	printPresorted(input);
 	start = std::chrono::high_resolution_clock::now();
 	fillVector(input);
-	std::cout << "Before: ";
-	printVector();
 	std::cout << "After:  ";
 	sortVector();
 	end = std::chrono::high_resolution_clock::now();
+	printSortedVector();
 	duration = end - start;
 	std::cout << "Time to process a range of " << _size << " elements with std::vector : " << duration.count() << " us" << std::endl;
 }
@@ -97,14 +98,13 @@ void PmergeMe::fillVector(char **input)
 		_even = true;
 }
 
-void PmergeMe::printVector(void)
+void PmergeMe::printPresorted(char **input)
 {
-	std::vector<std::pair<int, int> >::iterator it = _vector.begin();
-
-	while (it != _vector.end())
+	int i = 1;
+	while (input[i])
 	{
-		std::cout << it->first << " " << it->second << " ";
-		it++;
+		std::cout << input[i] << " ";
+		i++;
 	}
 	if (!_even)
 		std::cout << _oddOneOut;
@@ -140,9 +140,27 @@ void PmergeMe::SortLargestNumVector(int len)
 
 void PmergeMe::sortVector(void)
 {
+	if (_size == 1)
+		return ;
 	sortPairsVector();
 	SortLargestNumVector(_vector.size() - 1);
 	insertSmallerVector();
+}
+
+void PmergeMe::printSortedVector(void)
+{
+	if (!_even)
+	{
+		std::vector<int>::iterator spot = lower_bound(_sortedVector.begin(), _sortedVector.end(), _oddOneOut);
+		_sortedVector.insert(spot, _oddOneOut);
+	}
+	std::vector<int>::iterator ite = _sortedVector.begin();
+	while (ite != _sortedVector.end())
+	{
+		std::cout << *ite << " ";
+		ite++;
+	}
+	std::cout << std::endl;
 }
 
 void PmergeMe::insertSmallerVector(void)
@@ -161,18 +179,6 @@ void PmergeMe::insertSmallerVector(void)
 		_sortedVector.insert(spot, it->first);
 		it++;
 	}
-	if (!_even)
-	{
-		std::vector<int>::iterator spot = lower_bound(_sortedVector.begin(), _sortedVector.end(), _oddOneOut);
-		_sortedVector.insert(spot, _oddOneOut);
-	}
-	std::vector<int>::iterator ite = _sortedVector.begin();
-	while (ite != _sortedVector.end())
-	{
-		std::cout << *ite << " ";
-		ite++;
-	}
-	std::cout << std::endl;
 }
 
 //DEQUE FUNCTIONS!
@@ -182,13 +188,14 @@ void PmergeMe::callDeque(char **input)
 	_even = true;
 	std::chrono::high_resolution_clock::time_point start, end;
 	std::chrono::duration<double, std::micro> duration;
+	// std::cout << "Before: ";
+	//printPresorted(input);
 	start = std::chrono::high_resolution_clock::now();
 	fillDeque(input);
-	// std::cout << "Before: ";
-	// printDeque();
 	// std::cout << "After:  ";
 	sortDeque();
 	end = std::chrono::high_resolution_clock::now();
+	//printSortedDeque();
 	duration = end - start;
 	std::cout << "Time to process a range of " << _size << " elements with std::deque : " << duration.count() << " us" << std::endl;
 }
@@ -259,11 +266,28 @@ void PmergeMe::SortLargestNumDeque(int len)
 
 void PmergeMe::sortDeque(void)
 {
+	if (_size == 1)
+		return ;
 	sortPairsDeque();
 	SortLargestNumDeque(_deque.size() - 1);
 	insertSmallerDeque();
 }
 
+void PmergeMe::printSortedDeque(void)
+{
+	if (!_even)
+	{
+		std::deque<int>::iterator spot = lower_bound(_sortedDeque.begin(), _sortedDeque.end(), _oddOneOut);
+		_sortedDeque.insert(spot, _oddOneOut);
+	}
+	std::deque<int>::iterator ite = _sortedDeque.begin();
+	while (ite != _sortedDeque.end())
+	{
+		std::cout << *ite << " ";
+		ite++;
+	}
+	std::cout << std::endl;
+}
 
 void PmergeMe::insertSmallerDeque(void)
 {
@@ -281,16 +305,4 @@ void PmergeMe::insertSmallerDeque(void)
 		_sortedDeque.insert(spot, it->first);
 		it++;
 	}
-	if (!_even)
-	{
-		std::deque<int>::iterator spot = lower_bound(_sortedDeque.begin(), _sortedDeque.end(), _oddOneOut);
-		_sortedDeque.insert(spot, _oddOneOut);
-	}
-	// std::deque<int>::iterator ite = _sortedDeque.begin();
-	// while (ite != _sortedDeque.end())
-	// {
-	// 	std::cout << *ite << " ";
-	// 	ite++;
-	// }
-	// std::cout << std::endl;
 }
