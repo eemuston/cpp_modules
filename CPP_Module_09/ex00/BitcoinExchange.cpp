@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 01:37:49 by eemuston          #+#    #+#             */
-/*   Updated: 2024/03/20 12:49:25 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/03/27 15:36:49 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void BitcoinExchange::csv_parser(void)
 			throw InvalidFileException();
 		std::string line;
 		std::getline(file, line);
+		if (line.compare("date,exchange_rate") != 0)
+			throw BitcoinExchange::InvalidFileException();
 		while (std::getline(file, line))
 		{
 			time_t date = stringToTime(line.substr(0, line.find(",")));
@@ -56,6 +58,8 @@ void BitcoinExchange::calcutateExchangeRate(std::string inputfile)
 	}
 	std::string line;
 	std::getline(file, line);
+	if (line.compare("date | value") != 0)
+			std::cout << "The title is not correct in the inputfile which might cause issues." << std::endl;
 	while (std::getline(file, line))
 	{
 		time_t date;
