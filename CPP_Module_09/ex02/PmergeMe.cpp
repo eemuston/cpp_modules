@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 13:14:10 by eemuston          #+#    #+#             */
-/*   Updated: 2024/03/27 17:44:02 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/03/28 17:09:21 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,11 @@ bool PmergeMe::ValidateInput(char **input)
 		if (num < 0)
 		{
 			std::cerr << "Error: Larger than INT MAX!" << std::endl;
+			return false;
+		}
+		if (num == 0)
+		{
+			std::cerr << "Error: 0 is not positive either!" << std::endl;
 			return false;
 		}
 		unsigned int k = 0;
