@@ -6,7 +6,7 @@
 /*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 01:37:49 by eemuston          #+#    #+#             */
-/*   Updated: 2024/03/27 15:36:49 by eemuston         ###   ########.fr       */
+/*   Updated: 2024/03/28 17:53:52 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,31 +22,24 @@ BitcoinExchange::~BitcoinExchange(void)
 
 void BitcoinExchange::csv_parser(void)
 {
-	try
+	std::ifstream file("data.csv");
+	if(!file.is_open())
+		throw InvalidFileException();
+	std::string line;
+	std::getline(file, line);
+	if (line.compare("date,exchange_rate") != 0)
+		throw BitcoinExchange::InvalidFileException();
+	while (std::getline(file, line))
 	{
-		std::ifstream file("data.csv");
-		if(!file.is_open())
-			throw InvalidFileException();
-		std::string line;
-		std::getline(file, line);
-		if (line.compare("date,exchange_rate") != 0)
-			throw BitcoinExchange::InvalidFileException();
-		while (std::getline(file, line))
-		{
-			time_t date = stringToTime(line.substr(0, line.find(",")));
-				if (date == -1)
-					throw BadInputException();
-			double value = stringToDouble(line.substr(line.find(",") + 1));
-				if (value == -1)
-					throw BadInputException();
-			values.insert(std::pair<time_t, double>(date, value));
-		}
-		file.close();
+		time_t date = stringToTime(line.substr(0, line.find(",")));
+			if (date == -1)
+				throw BadInputException();
+		double value = stringToDouble(line.substr(line.find(",") + 1));
+			if (value == -1)
+				throw BadInputException();
+		values.insert(std::pair<time_t, double>(date, value));
 	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
+	file.close();
 }
 
 void BitcoinExchange::calcutateExchangeRate(std::string inputfile)
